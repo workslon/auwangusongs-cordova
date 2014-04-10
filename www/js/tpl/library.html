@@ -1,0 +1,21 @@
+<!--
+it would be maybe good id as concatination of parent folder name and current item name use
+e.g "<parent_folder_name>_<song/folder_name>"
+-->
+
+<header>
+    <h2><a href="#library">Library</a></h2>
+    <span class="icon sync"></span>
+</header>
+<div class="topcoat-list__container scroller cf">
+    <ul class="topcoat-list">
+    <% _.each(items, function(item) { %>
+        <li class="topcoat-list__item <%= item.isDirectory ? 'directory' : 'file' %>">
+            <a href="#directories/<%= item.name %>">
+                <p><%= item.name %></p>
+                <span class="chevron"></span>
+            </a>
+        </li>
+    <% }); %>
+    </ul>
+</div>
