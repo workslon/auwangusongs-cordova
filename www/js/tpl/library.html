@@ -6,7 +6,7 @@
     <ul class="topcoat-list">
     <% _.each(items, function(item) { %>
         <li class="topcoat-list__item <%= item.isDirectory ? 'directory' : 'file' %>">
-            <a data-url="<%= item.nativeURL %>" href="#<%= item.isDirectory ? 'directories' : 'files' %>/<%= item.nativeURL.replace('file:///storage/emulated/0/AuWanGuSongs/', '') %>">
+            <a data-url="<%= item.nativeURL %>" href="#<%= item.isDirectory ? 'directories' : 'files' %>/<%= item.nativeURL.replace('file:///storage/emulated/0/AuWanGuSongs/', '').replace(/\//g, '|') %>">
                 <%= item.name %>
             </a>
         </li>

@@ -1,5 +1,5 @@
 /* variables */
-@bg-color-sidebar: #9DA181;
+@bg-color-sidebar: rgba(223, 226, 226, .9);
 @bg-color-statusbar: #16A085;
 @icon-list-background: url(../assets/img/menu-32.png) no-repeat center;
 @icon-settings-background: url(../assets/img/settings-32.png) no-repeat center;
@@ -12,7 +12,6 @@ a {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     width: 100%;
-    background: #DFE2E2;
     border-top: solid 1px #BFC2C2;
     flex: 1;
     -webkit-box-flex: 1;
@@ -95,6 +94,7 @@ a {
 }
 #library header {
     padding: 0;
+    background: rgba(157, 161, 129, .9);
 }
 #library header a {
     display: block;
@@ -114,4 +114,15 @@ a {
 .topcoat-list__item a {
     display: block;
     padding: 1rem;
+}
+
+/* song */
+#song {
+    width: 80%;
+    height: 100%;
+    overflow: auto;
+    margin: 0 auto;
+}
+#song {
+    font-size: 1.3rem;
 }
