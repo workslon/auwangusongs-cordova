@@ -1,4 +1,4 @@
 auwangusongs-cordova
 ====================
 
-Cordova application for managing song lyrics
+Android Cordova application for managing song lyrics
