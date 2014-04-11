@@ -20,15 +20,12 @@ require.config({
 
 require(['jquery', 'backbone', 'app/router'], function ($, Backbone, Router) {
     var router = new Router();
+
+    Backbone.app = { rootPath: 'file:///storage/emulated/0/AuWanGuSongs/' };
     Backbone.history.start();
 
     FastClick.attach(document.body);
 
-    $('#list-btn').click(function () {
-        $('#library').toggleClass('visible');
-    });
-
-    $('#song').click(function () {
-        $('.visible').toggleClass('visible');
-    });
+    $('#list-btn').click(function () { $('#library').toggleClass('visible'); });
+    $('#song').click(function () { $('.visible').toggleClass('visible'); });
 });

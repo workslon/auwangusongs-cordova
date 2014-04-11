@@ -10,8 +10,8 @@ define(function (require) {
         routes: {
             '': 'home',
             'library': 'library',
-            'directories/:id': 'playlist',
-            'files/:id': 'song'
+            'directories/:path': 'playlist',
+            'files/:path': 'song'
         },
 
         // start screen
@@ -24,26 +24,25 @@ define(function (require) {
         },
 
         library: function () {
-
-            console.log(123);
-
             require(['app/views/library'], function (Library) {
-                return new Library({dirName: ''});
+                return new Library();
             });
         },
 
         // * library view updated
         // * song view - not
-        playlist: function (id) {
+        playlist: function (path) {
             require(['app/views/library'], function (Library) {
-                return new Library({dirName: id});
+                return new Library({path: path});
             });
         },
 
         // * song updated
         // * library view - not
-        song: function () {
-
+        song: function (path) {
+            require(['app/views/song'], function (Song) {
+                return new Song({path: path});
+            });
         }
 
     });

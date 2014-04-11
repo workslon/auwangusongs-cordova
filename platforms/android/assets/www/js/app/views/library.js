@@ -5,63 +5,58 @@ define(function (require) {
     var $                   = require('jquery'),
         _                   = require('underscore'),
         Backbone            = require('backbone'),
+        logError            = require('app/utils/error'),
         tpl                 = require('text!tpl/library.html'),
 
         template            = _.template(tpl),
-
+        rootPath            = Backbone.app.rootPath,
+        resolveURL          = window.resolveLocalFileSystemURL,
         root, currentDir;
 
     (function () {
-        var onFSSucces  = function (fileSystem) { console.log(arguments);$(window).trigger('onFSSucces', fileSystem.root); },
-            onFSFail    = function () { console.log(arguments);$(window).trigger('onFSFail', arguments); };
+        var onFSSucces  = function (fileSystem) {
+            fileSystem.root.getDirectory('AuWanguSongs', {create: true},
+            function (directory) {
+                root = directory;
+                Backbone.trigger('onFSSucces', directory);
+            }, logError);
+        };
 
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFSSucces, onFSFail);
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFSSucces, logError);
     })();
 
     return Backbone.View.extend({
 
         el: document.getElementById('library'),
 
-        initialize: function (dirName) {
-            var that = this;
+        initialize: function (item) {
+            var that        = this,
+                rootPath    = Backbone.app.rootPath,
+                item        = item || {},
+                path        = item.path ? (rootPath + item.path) : rootPath;
 
-            if (typeof dirName !== 'undefined') {
-
-                if (dirName.dirName === '') {
-                    currentDir = undefined;
-                }
-
-                that.render(root, dirName.dirName);
+            if (root) {
+                that.render(root, path);
             } else {
-                $(window).bind('onFSSucces', function (e, systemRoot) {
-                    that.render(systemRoot, dirName);
+                Backbone.on('onFSSucces', function (root) {
+                    that.render(root, path);
                 });
             }
         },
 
-        onFSError: function (error) { console.log(error); },
-
-        getDirectory: function (root, dir, targetDirName) {
-            root.getDirectory.call(dir, targetDirName, null,
-                function () { $(window).trigger('getDir', arguments); },
-                function (error) { console.log(error); });
-        },
-
-        getParent: function (root, dir) {
-            var that = this;
-            root.getParent.call(dir,
-                function () { $(window).trigger('getParent', arguments); },
-                that.onFSError);
+        getDirectory: function (path) {
+            resolveURL(path, function (dir) {
+                Backbone.trigger('getDirectory', dir);
+            });
         },
 
         getEntries: function (root, dir) {
-            var that = this;
-            root.createReader.call(dir).readEntries(function () {
-                $(window).trigger('getEntries', arguments);
-            }, that.onFSError);
+            root.createReader.call(dir).readEntries(function (entries) {
+                Backbone.trigger('getEntries', entries);
+            }, logError);
         },
 
-        readEntries: function (e, entries) {
+        readEntries: function (entries) {
             var directories = [],
                 files       = [],
                 items       = [];
@@ -88,22 +83,15 @@ define(function (require) {
             }));
         },
 
-        render: function (systemRoot, dirName) {
-            var that = this,
-                dir;
+        render: function (root, path) {
+            var that = this;
 
-            root        = systemRoot;
-            dir         = currentDir || root;
-            dirName     = dirName || 'AuWanGuSongs';
+            this.getDirectory(path);
 
-            that.getDirectory(root, dir, dirName);
-
-            $(window).bind('getDir', function (e, dir) {
-                currentDir = dir;
-                that.getEntries(root, dir);
+            Backbone.on('getDirectory', function (directory) {
+                that.getEntries(root, directory);
             });
-
-            $(window).bind('getEntries', that.readEntries.bind(that));
+            Backbone.on('getEntries', that.readEntries.bind(that));
         }
     });
 });
