@@ -40,9 +40,6 @@ define(function (require) {
         // * song updated
         // * library view - not
         song: function (path) {
-
-            console.log('ене')
-
             require(['app/views/song'], function (Song) {
                 return new Song({path: path});
             });

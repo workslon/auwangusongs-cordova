@@ -1,1 +1,137 @@
-a{text-decoration:none;color:inherit}.scroller{overflow:auto;-webkit-overflow-scrolling:touch;width:100%;border-top:solid 1px #bfc2c2;flex:1;-webkit-box-flex:1}#wrapper{overflow:hidden}#main{position:absolute;top:0;left:0;right:0;bottom:0;overflow:auto;width:100%}.status{height:4px;width:30%;background-color:#16a085;position:fixed;top:0;left:0}#list-btn{position:absolute;top:10px;left:10px;background:url(../assets/img/menu-32.png) no-repeat center}#settings-btn{position:absolute;top:10px;right:10px;background:url(../assets/img/settings-32.png) no-repeat center}.sidebar{overflow:hidden;position:fixed;top:0;bottom:0;box-sizing:border-box;width:36%;font-size:1rem;border-right:solid 1px #888;border-left:solid 1px #888;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);-webkit-transition-duration:.2s;transition-duration:.2s;background:rgba(223,226,226,0.9);display:flex;flex-direction:column;display:-webkit-box;-webkit-box-orient:vertical;z-index:1}.sidebar.left{left:-37%}.sidebar.right{right:-37%}.sidebar.right.visible{-webkit-transform:translate3d(-103%,0,0)}.sidebar.left.visible{-webkit-transform:translate3d(103%,0,0)}.sidebar header{padding:1rem 1.25rem .5rem 1.25rem;text-align:left;color:#fff}#library header{padding:0}#library header a{display:block;padding:.8rem 1rem}.sidebar h2{font-weight:normal;margin:0}.topcoat-list{background-color:#dfe2e2}.topcoat-list__item{cursor:pointer;padding:0}.topcoat-list__item a{display:block;padding:1rem}#song{width:80%;height:100%;overflow:auto;margin:0 auto}#song{font-size:1.3rem}
+/* variables */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.scroller {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  background: #DFE2E2;
+  border-top: solid 1px #BFC2C2;
+  flex: 1;
+  -webkit-box-flex: 1;
+}
+#wrapper {
+  overflow: hidden;
+}
+/* main */
+#main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  width: 100%;
+}
+.status {
+  height: 4px;
+  width: 100%;
+  background-color: #16a085;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+#list-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: url(../assets/img/menu-32.png) no-repeat center;
+}
+/* sidebar */
+.sidebar {
+  overflow: hidden;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  box-sizing: border-box;
+  width: 36%;
+  font-size: 1rem;
+  border-right: solid 1px #888;
+  border-left: solid 1px #888;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transition-duration: .2s;
+  transition-duration: .2s;
+  background: #9da181;
+  display: flex;
+  flex-direction: column;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  z-index: 1;
+}
+.sidebar.left {
+  left: -37%;
+}
+.sidebar.right {
+  right: -37%;
+}
+.sidebar.right.visible {
+  -webkit-transform: translate3d(-103%, 0, 0);
+}
+.sidebar.left.visible {
+  -webkit-transform: translate3d(103%, 0, 0);
+}
+.sidebar header {
+  padding: 1rem 1.25rem 0.5rem 1.25rem;
+  text-align: left;
+  color: #fff;
+}
+#library header {
+  padding: 0;
+}
+#library header a {
+  display: block;
+  padding: 0.8rem 1rem;
+}
+.sidebar h2 {
+  font-weight: normal;
+  margin: 0;
+}
+.topcoat-list {
+  background-color: #dfe2e2;
+}
+.topcoat-list__item {
+  cursor: pointer;
+  padding: 0;
+}
+.topcoat-list__item a {
+  display: block;
+  padding: 1em 1em 1em 4rem;
+}
+.directory a {
+  background: url(../assets/img/folder_filled-25.png) no-repeat 1em center;
+}
+.file a {
+  background: url(../assets/img/audio_file-32.png) no-repeat 0.9em center;
+}
+/* song */
+#song {
+  width: 80%;
+  height: 100%;
+  overflow: auto;
+  margin: 0 auto;
+}
+#song {
+  font-size: 1.3rem;
+}
+/* settings */
+#settings-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: url(../assets/img/settings-32.png) no-repeat center;
+}
+.decrement {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background: url(../assets/img/minus-32.png) no-repeat;
+}
+.increment {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background: url(../assets/img/plus-32.png) no-repeat;
+}

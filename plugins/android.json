@@ -8,7 +8,8 @@
             "/*": {
                 "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>": 1,
                 "<feature name=\"File\"><param name=\"android-package\" value=\"org.apache.cordova.file.FileUtils\" /><param name=\"onload\" value=\"true\" /></feature>": 1,
-                "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>": 1
+                "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>": 1,
+                "<feature name=\"KeepScreenOn\"><param name=\"android-package\" value=\"com.Kidobi.plugins.KeepScreenOn\" /></feature>": 1
             }
         },
         "AndroidManifest.xml": {
@@ -28,6 +29,9 @@
             "PACKAGE_NAME": "com.workslon.auwangusongs"
         },
         "org.apache.cordova.file-transfer": {
+            "PACKAGE_NAME": "com.workslon.auwangusongs"
+        },
+        "com.Kidobi.plugins.KeepScreenOn": {
             "PACKAGE_NAME": "com.workslon.auwangusongs"
         }
     },

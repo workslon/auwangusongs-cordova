@@ -149,6 +149,13 @@ module.exports = [
         "clobbers": [
             "window.FileTransfer"
         ]
+    },
+    {
+        "file": "plugins/com.Kidobi.plugins.KeepScreenOn/www/js/keepScreenOn.js",
+        "id": "com.Kidobi.plugins.KeepScreenOn.KeepScreenOn",
+        "clobbers": [
+            "window.keepScreenOn"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -157,7 +164,8 @@ module.exports.metadata =
     "org.apache.cordova.device": "0.2.8",
     "org.apache.cordova.console": "0.2.7",
     "org.apache.cordova.file": "1.0.1",
-    "org.apache.cordova.file-transfer": "0.4.2"
+    "org.apache.cordova.file-transfer": "0.4.2",
+    "com.Kidobi.plugins.KeepScreenOn": "1.0"
 }
 // BOTTOM OF METADATA
 });

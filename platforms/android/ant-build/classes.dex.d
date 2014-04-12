@@ -1,4 +1,7 @@
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/ant-build/classes.dex : \
+/Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/ant-build/classes/com/Kidobi/plugins/KeepScreenOn$1.class \
+/Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/ant-build/classes/com/Kidobi/plugins/KeepScreenOn$2.class \
+/Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/ant-build/classes/com/Kidobi/plugins/KeepScreenOn.class \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/ant-build/classes/com/workslon/auwangusongs/auwangusongs.class \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/ant-build/classes/com/workslon/auwangusongs/BuildConfig.class \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/ant-build/classes/com/workslon/auwangusongs/R$attr.class \
