@@ -69,6 +69,7 @@
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/app/models/item.js \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/app/models/Song.js \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/app/utils/error.js \
+/Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/app/utils/fader.js \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/app/utils/fileSystemRoot.js \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/app/utils/pageslider.js \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/app/views/library.js \

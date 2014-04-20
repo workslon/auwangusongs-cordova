@@ -8,6 +8,7 @@ define(function (require) {
         logError            = require('app/utils/error'),
         SongTpl             = require('text!tpl/song.html'),
         SettingsTpl         = require('text!tpl/settings.html'),
+        Fader               = require('app/utils/fader'),
 
         songTpl             = _.template(SongTpl),
         settingsTpl         = _.template(SettingsTpl),
@@ -16,12 +17,35 @@ define(function (require) {
         $settings           = $('#settings'),
 
         songWrapHeight, $song, songHeight, deltaHeight,
-        playTick, delayedStop;
+        playTick, delayedStop,
+        fontSize = 1,
+        speed = 1;
+
+    $('#settings').html(settingsTpl());
+    Fader.init(document.getElementById('font-size-fader'));
+    Fader.init(document.getElementById('speed-fader'));
+
+    Backbone.on('faderChange', function (value) {
+        $('#fader-value').html(value);
+    });
+
+    Backbone.on('drawFile', function (that) {
+        that.drawFileHandler();
+    });
+
+    Backbone.on('play', function (that) {
+        $songWrap.addClass('plays');
+        that.hideSettings();
+        that.play();
+    });
+
+    Backbone.on('stop', function (that) {
+        $songWrap.removeClass('plays');
+        that.showSettings();
+        that.stop();
+    });
 
     return Backbone.View.extend({
-
-        $settingsEl: $('#settings'),
-
         initialize: function (item) {
             var that        = this,
                 rootPath    = Backbone.app.rootPath,
@@ -45,14 +69,10 @@ define(function (require) {
                             text: e.target.result
                         }
                     }));
-                    Backbone.trigger('drawFile');
+                    Backbone.trigger('drawFile', that);
                 }
                 reader.readAsText(file);
             }, logError);
-        },
-
-        addSettings: function () {
-            $settings.find('ul').html(settingsTpl());
         },
 
         play: function () {
@@ -63,11 +83,48 @@ define(function (require) {
                 if (delayedStop) clearTimeout(delayedStop);
                 $songWrap.scrollTop(scrollTop + 1);
                 playTick = setTimeout(this.play.bind(this), 100);
+            } else {
+                Backbone.trigger('stop', that);
             }
         },
 
-        pause: function () {
+        stop: function () {
             clearTimeout(playTick);
+        },
+
+        songClickHandler: function () {
+            $songWrap.hasClass('plays') ?
+                Backbone.trigger('stop', this) :
+                Backbone.trigger('play', this);
+        },
+
+        drawFileHandler: function () {
+            var that = this;
+
+            songWrapHeight  = songWrapHeight ? songWrapHeight : $songWrap.height();
+            $song           = $song ? $song : $songWrap.find('pre');
+            songHeight      = songHeight ? songHeight : $song.height();
+            deltaHeight     = songHeight - songWrapHeight;
+
+            $songWrap.on('click', function () {
+                that.songClickHandler();
+            });
+        },
+
+        showSettings: function (callback) {
+            callback = callback && typeof callback === 'function' ?
+                        callback :
+                        function () {};
+
+            $('#settings').fadeIn('slow', callback);
+        },
+
+        hideSettings: function (callback) {
+            callback = callback && typeof callback === 'function' ?
+                        callback :
+                        function () {};
+
+            $('#settings').fadeOut('slow', callback);
         },
 
         render: function (path) {
@@ -75,27 +132,6 @@ define(function (require) {
 
             window.resolveLocalFileSystemURL(path, function (entry) {
                 that.drawFile(entry);
-                that.addSettings();
-
-                Backbone.on('drawFile', function () {
-                    songWrapHeight  = songWrapHeight ? songWrapHeight : $songWrap.height();
-                    $song           = $song ? $song : $songWrap.find('pre');
-                    songHeight      = songHeight ? songHeight : $song.height();
-                    deltaHeight     = songHeight - songWrapHeight;
-
-                    $song.on('click', function (){
-                        var $t = $(this);
-
-                        if ($t.hasClass('plays')) {
-                            that.pause();
-                            $t.removeClass('plays');
-                        } else {
-                            that.play();
-                            $t.addClass('plays');
-                        }
-                    });
-                });
-
             }, logError);
         }
     });

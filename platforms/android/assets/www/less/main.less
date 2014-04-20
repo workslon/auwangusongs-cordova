@@ -2,7 +2,6 @@
 @bg-color-sidebar: #9DA181;
 @bg-color-statusbar: #16A085;
 @icon-list-background: url(../assets/img/menu-32.png) no-repeat center;
-@icon-settings-background: url(../assets/img/settings-32.png) no-repeat center;
 
 a {
     text-decoration: none;
@@ -128,21 +127,52 @@ a {
 }
 
 /* settings */
-#settings-btn {
+#font-size-fader,
+#speed-fader {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: @icon-settings-background;
+    top: 12%;
+    left: 0;
+    bottom: 0;
+    width: 8%;
 }
-.decrement {
-    display: inline-block;
-    width: 32px;
-    height: 32px;
-    background: url(../assets/img/minus-32.png) no-repeat;
+#speed-fader {
+    right: 0;
+    left: auto;
 }
-.increment {
-    display: inline-block;
-    width: 32px;
-    height: 32px;
-    background: url(../assets/img/plus-32.png) no-repeat;
+#fader-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: none;
+    border: 2px solid;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 8rem;
+    -webkit-transform: translate(-50%, -50%);
+    color: #16a085;
+    width: 150px;
+}
+#font-size-fader:before,
+#speed-fader:before {
+    position: absolute;
+    top: 5%;
+    width: 100%;
+    content: 'Aa';
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #16a085;
+}
+#speed-fader:before {
+    content: 'S';
+}
+#font-size-fader:after,
+#speed-fader:after {
+    position: absolute;
+    top: 17%;
+    left: 50%;
+    bottom: 8%;
+    content: '';
+    width: 1px;
+    background: #16a085;
 }
