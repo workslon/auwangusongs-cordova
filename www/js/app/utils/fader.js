@@ -39,7 +39,7 @@ define(function (require) {
                         value += 1;
                     }
                     startY = y;
-                    Backbone.trigger('faderChange', value);
+                    Backbone.trigger('faderChange', [value, $(this).attr('data-var'), $(this).attr('id')]);
                 }
             },
 

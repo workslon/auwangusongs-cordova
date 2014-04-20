@@ -18,15 +18,19 @@ define(function (require) {
 
         songWrapHeight, $song, songHeight, deltaHeight,
         playTick, delayedStop,
-        fontSize = 1,
-        speed = 1;
+        speed = 3;
 
     $('#settings').html(settingsTpl());
     Fader.init(document.getElementById('font-size-fader'));
     Fader.init(document.getElementById('speed-fader'));
 
-    Backbone.on('faderChange', function (value) {
-        $('#fader-value').html(value);
+    Backbone.on('faderChange', function (args) {
+        document.getElementById('fader-value').innerHTML = args[0];
+        if (args[1] === 'fontSize') {
+            document.getElementById('song').className = 'fontSize' + args[0];
+        } else {
+            speed = args[0];
+        }
     });
 
     Backbone.on('drawFile', function (that) {
@@ -82,7 +86,7 @@ define(function (require) {
             if (scrollTop < deltaHeight) {
                 if (delayedStop) clearTimeout(delayedStop);
                 $songWrap.scrollTop(scrollTop + 1);
-                playTick = setTimeout(this.play.bind(this), 100);
+                playTick = setTimeout(this.play.bind(this), 180 / speed);
             } else {
                 Backbone.trigger('stop', that);
             }
@@ -106,6 +110,7 @@ define(function (require) {
             songHeight      = songHeight ? songHeight : $song.height();
             deltaHeight     = songHeight - songWrapHeight;
 
+            $songWrap.off('click');
             $songWrap.on('click', function () {
                 that.songClickHandler();
             });

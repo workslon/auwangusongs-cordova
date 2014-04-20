@@ -30,27 +30,4 @@ require(['jquery', 'backbone', 'app/router'], function ($, Backbone, Router) {
     $('#settings-btn').click(function () { $('#settings').toggleClass('visible'); });
     $('#song').click(function () { $('.visible').toggleClass('visible'); });
     $('#library').on('click', 'li.file a', function () { $('.visible').toggleClass('visible'); });
-
-    // $(document).on('touchmove', function (e) {
-    //     var pageY = e.touches[0].pageY;
-    //     if () {}
-    //     e.preventDefault();
-    // });
-
-    // document.addEventListener("touchmove", function (e) {
-    //     e.preventDefault();
-
-    //     // if (y === 0) {
-    //     //     y = e.touches[0].pageY;
-    //     // } else {
-    //     //     if ()
-    //     // }
-
-    //     // if (y < e.touches[0].pageY) {
-
-    //     // }
-    //     // y = e.touches[0].pageY;
-
-    //     console.log(e.touches[0].pageY);
-    // }, false);
 });
