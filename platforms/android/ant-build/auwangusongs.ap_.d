@@ -31,6 +31,8 @@
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/assets/img/menu-32.png \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/assets/img/minus-32.png \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/assets/img/pause-48.png \
+/Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/assets/img/pause-50.png \
+/Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/assets/img/play-50.png \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/assets/img/plus-32.png \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/assets/img/settings-32.png \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/assets/img/start-48.png \
@@ -62,12 +64,9 @@
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/lib \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/require.js \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/tpl \
-/Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/app/models \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/app/router.js \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/app/utils \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/app/views \
-/Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/app/models/item.js \
-/Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/app/models/Song.js \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/app/utils/error.js \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/app/utils/fader.js \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/app/utils/fileSystemRoot.js \
@@ -79,8 +78,8 @@
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/lib/jquery.js \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/lib/text.js \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/lib/underscore.js \
+/Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/tpl/controls.html \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/tpl/library.html \
-/Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/tpl/settings.html \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/tpl/song.html \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/less/main.less \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/plugins/com.Kidobi.plugins.KeepScreenOn \

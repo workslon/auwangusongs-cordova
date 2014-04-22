@@ -7,45 +7,44 @@ define(function (require) {
         Backbone            = require('backbone'),
         logError            = require('app/utils/error'),
         SongTpl             = require('text!tpl/song.html'),
-        SettingsTpl         = require('text!tpl/settings.html'),
+        SettingsTpl         = require('text!tpl/controls.html'),
         Fader               = require('app/utils/fader'),
 
         songTpl             = _.template(SongTpl),
         settingsTpl         = _.template(SettingsTpl),
 
         $songWrap           = $('#song'),
-        $settings           = $('#settings'),
+        $controls           = $('#controls'),
 
         songWrapHeight, $song, songHeight, deltaHeight,
-        playTick, delayedStop,
+        playTick, delayedStop, $playBtn,
         speed = 3;
 
-    $('#settings').html(settingsTpl());
-    Fader.init(document.getElementById('font-size-fader'));
-    Fader.init(document.getElementById('speed-fader'));
+    $controls.html(settingsTpl());
 
-    Backbone.on('faderChange', function (args) {
-        document.getElementById('fader-value').innerHTML = args[0];
-        if (args[1] === 'fontSize') {
-            document.getElementById('song').className = 'fontSize' + args[0];
-        } else {
-            speed = args[0];
-        }
-    });
+    //Fader.init(document.getElementById('font-size-fader'));
+    //Fader.init(document.getElementById('speed-fader'));
+
+    // Backbone.on('faderChange', function (args) {
+    //     document.getElementById('fader-value').innerHTML = args[0];
+    //     if (args[1] === 'fontSize') {
+    //         document.getElementById('song').className = 'fontSize' + args[0];
+    //     } else {
+    //         speed = args[0];
+    //     }
+    // });
 
     Backbone.on('drawFile', function (that) {
         that.drawFileHandler();
     });
 
     Backbone.on('play', function (that) {
-        $songWrap.addClass('plays');
-        that.hideSettings();
+        $playBtn.removeClass('paused');
         that.play();
     });
 
     Backbone.on('stop', function (that) {
-        $songWrap.removeClass('plays');
-        that.showSettings();
+        $playBtn.addClass('paused');
         that.stop();
     });
 
@@ -97,9 +96,9 @@ define(function (require) {
         },
 
         songClickHandler: function () {
-            $songWrap.hasClass('plays') ?
-                Backbone.trigger('stop', this) :
-                Backbone.trigger('play', this);
+            $playBtn.hasClass('paused') ?
+                Backbone.trigger('play', this) :
+                Backbone.trigger('stop', this);
         },
 
         drawFileHandler: function () {
@@ -109,19 +108,12 @@ define(function (require) {
             $song           = $song ? $song : $songWrap.find('pre');
             songHeight      = songHeight ? songHeight : $song.height();
             deltaHeight     = songHeight - songWrapHeight;
+            $playBtn        = $playBtn ? $playBtn : $('#play');
 
-            $songWrap.off('click');
-            $songWrap.on('click', function () {
+            $playBtn.off('click');
+            $playBtn.on('click', function () {
                 that.songClickHandler();
             });
-        },
-
-        showSettings: function (callback) {
-            $('#settings').fadeIn();
-        },
-
-        hideSettings: function (callback) {
-            $('#settings').fadeOut();
         },
 
         render: function (path) {

@@ -26,7 +26,9 @@ require(['jquery', 'backbone', 'app/router'], function ($, Backbone, Router) {
     keepScreenOn.KeepScreenOn();
     FastClick.attach(document.body);
 
-    $('#list-btn').click(function () { $('#library').toggleClass('visible'); });
+    document.getElementById('list-btn').addEventListener('touchmove', function () {
+        $('#library').toggleClass('visible');
+    });
     $('#settings-btn').click(function () { $('#settings').toggleClass('visible'); });
     $('#song').click(function () { $('.visible').toggleClass('visible'); });
     $('#library').on('click', 'li.file a', function () { $('.visible').toggleClass('visible'); });

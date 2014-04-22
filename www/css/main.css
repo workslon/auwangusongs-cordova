@@ -35,9 +35,10 @@ a {
 }
 #list-btn {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  background: url(../assets/img/menu-32.png) no-repeat center;
+  top: 0;
+  left: 0;
+  width: 30px;
+  bottom: 0;
 }
 /* sidebar */
 .sidebar {
@@ -102,60 +103,45 @@ a {
 }
 /* song */
 #song {
-  width: 80%;
+  width: 98%;
   height: 100%;
   overflow: auto;
   margin: 0 auto;
 }
-/* settings */
-#font-size-fader,
-#speed-fader {
+/* controls */
+#controls {
   position: absolute;
-  top: 12%;
-  left: 0;
-  bottom: 0;
-  width: 8%;
-}
-#speed-fader {
+  top: 0;
   right: 0;
-  left: auto;
+  bottom: 0;
+  width: 6em;
 }
-#fader-value {
+#play {
+  top: 0;
+}
+#speed {
   position: absolute;
   top: 50%;
-  left: 50%;
-  display: none;
-  border: 2px solid;
-  border-radius: 20px;
+  -webkit-transform: translateY(-50%);
+}
+#increment,
+#decrement {
   text-align: center;
-  font-size: 6rem;
-  -webkit-transform: translate(-50%, -50%);
-  color: #16a085;
-  width: 120px;
+  line-height: 6em;
 }
-#font-size-fader:before,
-#speed-fader:before {
-  position: absolute;
-  top: 5%;
-  width: 100%;
-  content: 'Aa';
-  text-align: center;
-  font-size: 1.5em;
-  font-weight: bold;
-  color: #16a085;
+#increment {
+  margin-bottom: 2px;
 }
-#speed-fader:before {
-  content: 'S';
+#play {
+  background: #cccccc url(../assets/img/pause-50.png) no-repeat center;
 }
-#font-size-fader:after,
-#speed-fader:after {
-  position: absolute;
-  top: 17%;
-  left: 50%;
-  bottom: 8%;
-  content: '';
-  width: 1px;
-  background: #16a085;
+#play.paused {
+  background: #cccccc url(../assets/img/play-50.png) no-repeat center;
+}
+.control {
+  width: 6em;
+  height: 6em;
+  background: #ccc;
 }
 .fontSize1 {
   font-size: 1.1em;
