@@ -19,17 +19,26 @@ require.config({
 });
 
 require(['jquery', 'backbone', 'app/router'], function ($, Backbone, Router) {
-    var router = new Router();
+    var router      = new Router(),
+
+        listBtn     = document.getElementById('list-btn'),
+        $library    = $('#library'),
+        $song       = $('#song'),
+
+        hideSidebar = function () {
+            $('.visible').toggleClass('visible');
+        },
+
+        showSidebar = function () {
+            $library.addClass('visible');
+        };
+
+    listBtn.addEventListener('touchmove', showSidebar);
+    $song.on('click touchmove', hideSidebar);
+    $library.on('click', 'li.file a', hideSidebar);
 
     Backbone.app = { rootPath: 'file:///storage/emulated/0/AuWanGuSongs/' };
     Backbone.history.start();
     keepScreenOn.KeepScreenOn();
     FastClick.attach(document.body);
-
-    document.getElementById('list-btn').addEventListener('touchmove', function () {
-        $('#library').toggleClass('visible');
-    });
-    $('#settings-btn').click(function () { $('#settings').toggleClass('visible'); });
-    $('#song').click(function () { $('.visible').toggleClass('visible'); });
-    $('#library').on('click', 'li.file a', function () { $('.visible').toggleClass('visible'); });
 });

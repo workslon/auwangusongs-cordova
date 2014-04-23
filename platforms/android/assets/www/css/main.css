@@ -3,6 +3,9 @@ a {
   text-decoration: none;
   color: inherit;
 }
+.d-none {
+  display: none !important;
+}
 .scroller {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
@@ -133,15 +136,33 @@ a {
   margin-bottom: 2px;
 }
 #play {
-  background: #cccccc url(../assets/img/pause-50.png) no-repeat center;
+  background: rgba(102, 102, 102, 0.5) url(../assets/img/pause-50.png) no-repeat center;
 }
 #play.paused {
-  background: #cccccc url(../assets/img/play-50.png) no-repeat center;
+  background: rgba(102, 102, 102, 0.5) url(../assets/img/play-50.png) no-repeat center;
+}
+.shown {
+  display: block !important;
 }
 .control {
   width: 6em;
   height: 6em;
-  background: #ccc;
+  background: rgba(102, 102, 102, 0.5);
+}
+#value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -1.2em;
+  -webkit-transform: translateY(-50%);
+  display: none;
+  width: 2.3em;
+  height: 2.3em;
+  background: rgba(102, 102, 102, 0.5);
+  font-size: 3em;
+  line-height: 2.3em;
+  color: #ffffff;
+  text-align: center;
 }
 .fontSize1 {
   font-size: 1.1em;
