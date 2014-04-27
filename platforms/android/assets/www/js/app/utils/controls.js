@@ -47,14 +47,12 @@ define(function (require) {
             },
 
             showSpeed = function (value) {
-                $value
-                    .addClass('shown')
-                    .text(value);
+                $value.addClass('shown');
+                $value.find('span').text(value);
             },
 
             hideSpeed = function (value) {
-                $value
-                    .removeClass('shown');
+                $value.removeClass('shown');
             },
 
             initSpeedHandler = function () {

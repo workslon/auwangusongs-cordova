@@ -8,8 +8,7 @@ define(function (require) {
         logError            = require('app/utils/error'),
         SongTpl             = require('text!tpl/song.html'),
         Controls            = require('app/utils/controls'),
-
-        songTpl             = _.template(SongTpl),
+        Fader               = require('app/utils/fader'),
 
         $songWrap           = $('#song'),
         $settings           = $('#settings'),
@@ -17,8 +16,10 @@ define(function (require) {
         $playBtn            = $('#play'),
         $incrementBtn       = $('#increment'),
         $decrementBtn       = $('#decrement'),
+        $fontSizeEl         = $('#font-size'),
 
-        options             = { speed: 1 },
+        songTpl             = _.template(SongTpl),
+        options             = {speed: 1},
 
         songWrapHeight, $song, songHeight, deltaHeight, playTick, delayedStop;
 
@@ -48,6 +49,11 @@ define(function (require) {
     };
 
     Controls.init(options);
+    Fader.init($fontSizeEl[0]);
+
+    Backbone.on('faderChange', function (value) {
+        $songWrap[0].className = 'fontSize' + value;
+    });
 
     Backbone.on('drawFile', function (that) {
         calcSongHeight();
@@ -63,6 +69,10 @@ define(function (require) {
         $playBtn.addClass('paused');
         stop();
     });
+
+    document.addEventListener("pause", function () {
+        Backbone.trigger('stop');
+    }, false);
 
     Backbone.on('speedChanged', function (speed) {
         options.speed = speed;

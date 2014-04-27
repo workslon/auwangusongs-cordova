@@ -46,11 +46,11 @@ a {
 /* sidebar */
 .sidebar {
   overflow: hidden;
-  position: fixed;
+  position: absolute;
   top: 0px;
   bottom: 0px;
   box-sizing: border-box;
-  width: 32%;
+  width: 46%;
   font-size: 1rem;
   border-right: solid 1px #888;
   border-left: solid 1px #888;
@@ -66,10 +66,18 @@ a {
   z-index: 1;
 }
 .sidebar.left {
-  left: -33%;
+  left: -47%;
+}
+@media (max-width: 600px) {
+  .sidebar {
+    width: 32%;
+  }
+  .sidebar.left {
+    left: -33%;
+  }
 }
 .sidebar.left.visible {
-  -webkit-transform: translate3d(103%, 0, 0);
+  -webkit-transform: translate3d(102%, 0, 0);
 }
 .sidebar header {
   padding: 1rem 1.25rem 0.5rem 1.25rem;
@@ -111,13 +119,17 @@ a {
   overflow: auto;
   margin: 0 auto;
 }
+#song pre {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 /* controls */
 #controls {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
-  width: 6em;
+  width: 5em;
 }
 #play {
   top: 0;
@@ -130,39 +142,56 @@ a {
 #increment,
 #decrement {
   text-align: center;
-  line-height: 6em;
+}
+#increment span,
+#decrement span {
+  font-size: 4em;
+  color: #fff;
+  line-height: 125%;
 }
 #increment {
   margin-bottom: 2px;
 }
 #play {
-  background: rgba(102, 102, 102, 0.5) url(../assets/img/pause-50.png) no-repeat center;
+  background: rgba(157, 161, 129, 0.5) url(../assets/img/pause-50.png) no-repeat center;
+  border-radius: 0 0 0 10px;
 }
 #play.paused {
-  background: rgba(102, 102, 102, 0.5) url(../assets/img/play-50.png) no-repeat center;
+  background: rgba(157, 161, 129, 0.5) url(../assets/img/play-50.png) no-repeat center;
 }
 .shown {
   display: block !important;
 }
 .control {
-  width: 6em;
-  height: 6em;
-  background: rgba(102, 102, 102, 0.5);
+  width: 5em;
+  height: 5em;
+  background: rgba(157, 161, 129, 0.5);
+  border-radius: 10px 0 0 10px;
 }
 #value {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-left: -1.2em;
+  margin-left: -2.5em;
   -webkit-transform: translateY(-50%);
   display: none;
-  width: 2.3em;
-  height: 2.3em;
-  background: rgba(102, 102, 102, 0.5);
-  font-size: 3em;
-  line-height: 2.3em;
+  width: 6em;
+  height: 6em;
+  border-radius: 10px;
+  background: rgba(157, 161, 129, 0.7);
   color: #ffffff;
   text-align: center;
+}
+#value span {
+  font-size: 2.6em;
+  line-height: 240%;
+}
+#font-size {
+  position: absolute;
+  height: 30%;
+  width: 5em;
+  background: rgba(157, 161, 129, 0.2);
+  bottom: 0;
 }
 .fontSize1 {
   font-size: 1.1em;

@@ -79,7 +79,6 @@
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/lib/jquery.js \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/lib/text.js \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/lib/underscore.js \
-/Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/tpl/controls.html \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/tpl/library.html \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/js/tpl/song.html \
 /Applications/MAMP/htdocs/cordova/auwangusongs/platforms/android/assets/www/less/main.less \
